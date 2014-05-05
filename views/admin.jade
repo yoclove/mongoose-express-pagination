@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	h1= title
+	form( method="post", action="")
+		div.col-md-6
+			select.form-control(name="pagin")
+				option() -- Select users per page --
+				option(value="3") 3
+				option(value="5") 5
+				option() All
+		div.col-md-3
+			input(type="submit", id="pagesearch" value="Search" class="btn btn-success")
+		table.table
+			thead
+				tr
+					th Username
+					th Email
+			tbody
+				each data in listofusers
+					tr.rowlink
+						td #{data.username}
+						td #{data.email}
+		ul.pagination
+			- for (var i = 0; i < count / limit; i++)
+				- if (count / limit > 1)
+					li
+						a(href='/admin/page/#{i}')= i + 1
+		script(src="javascripts/pagination.js")
