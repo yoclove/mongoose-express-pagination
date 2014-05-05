@@ -3,7 +3,7 @@ $(function(){
 		e.preventDefault();
 		var optionValue = $('select[name=pagin]').val();
 		if (typeof(Storage) !== "undefined") {
-			localStorage.setItem("optionval", optionValue); // save option value for later access
+			localStorage.setItem("optionval", optionValue); // save optionValue for later access
 		} else {
 			alert("An error has occured. Your browser doesn't support Web Storage");
 		}
@@ -26,7 +26,7 @@ $(function(){
 		$.ajax({
 			type: 'post',
 			url: href,
-			// post the liElements value to req.body.pagin in /admin/page/ controller
+			// post the optionValue value to req.body.pagin in /admin/page/ controller
 			data: { pagin: localStorage.getItem("optionval") },
 			success: function(data) {
 				$('body').html(data);
